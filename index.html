@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen la Morala</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Scholarly Serenity -->
+    <!-- Application Structure Plan: The application is structured as a single-page tabbed interface. This design was chosen to organize the three distinct exam topics into clear, focused sections, directly addressing the user's need to study separate subjects. This interactive structure allows the user to switch between questions without the cognitive load of scrolling through a long document, making study and review more efficient. The user flow is intentionally simple: select a topic from the navigation, and the corresponding detailed analysis is displayed. This is superior to a static page as it presents information in manageable, user-controlled chunks. -->
+    <!-- Visualization & Content Choices: Given the purely textual nature of the source material and the user's request for synthesized answers, the primary presentation method is carefully formatted text and HTML tables. The main "visualization" is the logical organization of this text and data into an interactive tabbed layout. Goal: Inform & Organize. Presentation Method: HTML content blocks (paragraphs and tables) revealed/hidden via a JS-controlled tab system. Interaction: User clicks on navigation tabs to display specific content sections. Justification: This approach directly serves the user's goal of studying for an exam by providing focused access to each topic and structured data. No quantitative data was present in the source that would necessitate Chart.js or Plotly.js. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFBF8;
+            color: #403A3A;
+        }
+        h1, h2 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+        }
+        .content-text {
+            font-family: 'Lora', serif;
+            line-height: 1.8;
+        }
+        .nav-button {
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-button.active {
+            border-bottom-color: #D4A373;
+            color: #D4A373;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.75rem;
+            text-align: left;
+        }
+        th {
+            background-color: #f9fafb;
+            font-weight: 600;
+            color: #374151;
+        }
+        tr:nth-child(even) {
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="min-h-screen flex flex-col items-center p-4 sm:p-6 lg:p-8">
+        <header class="w-full max-w-5xl mx-auto text-center mb-8">
+            <h1 class="text-3xl sm:text-4xl font-bold text-gray-800 tracking-tight">Examen la Morala</h1>
+            <p class="mt-2 text-lg text-gray-600">Ghid de studiu interactiv</p>
+        </header>
+
+        <main class="w-full max-w-5xl mx-auto">
+            <nav id="navigation" class="flex justify-center border-b border-gray-200 mb-8">
+                <button data-target="legea-morala" class="nav-button active text-sm sm:text-base px-4 py-3 font-medium text-gray-700 hover:text-amber-700">Legea Morală a Noului Testament</button>
+                <button data-target="patologie-constiinta" class="nav-button text-sm sm:text-base px-4 py-3 font-medium text-gray-700 hover:text-amber-700">Patologia Conștiinței</button>
+                <button data-target="evaluare-morala" class="nav-button text-sm sm:text-base px-4 py-3 font-medium text-gray-700 hover:text-amber-700">Evaluarea Morală</button>
+            </nav>
+
+            <div id="content-container">
+                <section id="legea-morala" class="content-section bg-white p-6 sm:p-8 rounded-lg shadow-sm">
+                    <h2 class="text-2xl font-bold mb-6 text-gray-800">1. Legea Morală a Noului Testament</h2>
+                    <div class="space-y-4 content-text text-gray-700 text-justify">
+                        <p>Legea Morală a Noului Testament reprezintă o desăvârșire și o interiorizare a Legii Vechiului Testament, avându-L în centru pe Mântuitorul Iisus Hristos. Aceasta nu este un simplu cod de reguli exterioare, ci este "legea duhului vieții în Hristos Iisus" (Romani 8, 2), o lege a harului, a iubirii și a libertății. Dacă Decalogul a fost dat pentru a pune un frâu păcatului și a arăta neputința omului de a se mântui singur, Legea Nouă, vestită în Predica de pe Munte, mută accentul de la fapta exterioară la intenția inimii. Hristos nu anulează Legea veche, ci o "împlinește" (Matei 5, 17), arătând că împlinirea ei nu stă în conformism, ci într-o transformare lăuntrică radicală, posibilă doar prin lucrarea Sfântului Duh în sufletul credinciosului. Vechea Lege, deși sfântă, a fost "slabă prin trup", incapabilă să elibereze pe deplin omenirea de sub dominația "trupului morții" și a "trupului păcatului", care predispune la slăbiciune morală. Prin Hristos, harul prisosește, permițând o transformare interioară care transcende simpla conformitate externă.</p>
+                        <p>Caracterul fundamental al Legii Noi este iubirea. Porunca iubirii față de Dumnezeu și față de aproapele (Matei 22, 37-40) devine sinteza și cheia întregii vieți morale. Această iubire nu este un simplu sentiment, ci o jertfă activă, o dăruire de sine după modelul lui Hristos, Care "S-a dat pe Sine pentru noi". Sfântul Apostol Pavel subliniază că "dragostea este plinirea legii" (Romani 13, 10), deoarece cel care iubește cu adevărat nu va face niciun rău aproapelui său. Noul Testament introduce o "logică a plusării", cerând o iubire proactivă, necondiționată și jertfelnică, exemplificată prin chemarea de a iubi pe vrăjmași (Matei 5:44-45). Aceasta subliniază o dispoziție interioară de milă și reconciliere, mutând accentul de la o înțelegere tranzacțională a moralității la una transformațională.</p>
+                        <p>Spre deosebire de Legea Veche, care se baza pe teama de pedeapsă, Legea Noului Testament se întemeiază pe o relație filială cu Dumnezeu. Creștinul nu mai este rob, ci fiu, și ascultarea sa izvorăște din dragoste și recunoștință, nu din frică. Această nouă relație aduce cu sine o libertate duhovnicească, "libertatea cu care ne-a făcut liberi Hristos" (Galateni 5, 1). Nu este o libertate de a păcătui, ci libertatea față de tirania păcatului, a morții și a legii înțelese legalist. Predica de pe Munte (Matei 5-7) servește drept expunere esențială a acestei Legi, transcedând acțiunea externă pentru a examina dispoziția și intenția interioară, subliniind că păcatul își are originea în inimă și în minte, nu doar în acțiunile exterioare. Conceptul de "om lăuntric" este crucial, reprezentând adevărata "biserică a lui Dumnezeu", unde adevărata închinare și viața morală se desfășoară în inimă.</p>
+                        <p>În esență, Legea Morală a Noului Testament este Hristos Însuși, "sfârșitul legii" (Romani 10, 4), în sensul de țintă și împlinire. Viața morală creștină devine astfel o "viață în Hristos", o imitare a virtuților Sale și o unire tot mai profundă cu El. Fericirile (Matei 5, 3-12) conturează portretul omului desăvârșit, a celui ce trăiește conform acestei legi interioare a harului. Ele nu sunt porunci, ci stări duhovnicești care descriu calea spre îndumnezeire, scopul final al existenței umane. Reinterpretarea Decalogului în Noul Testament este o împlinire, nu o abrogare, aducând Legea la perfecțiunea și sensul său cel mai profund, transformând conformitatea externă în conformitate internă cu iubirea divină.</p>
+
+                        <h3 class="text-xl font-semibold mb-4 text-gray-800">Tabel 1: Decalogul Vechiului și Noului Testament: O Comparație a Interpretărilor</h3>
+                        <div class="overflow-x-auto">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Porunca</th>
+                                        <th>Înțelegerea Vechiului Testament (Tradițional)</th>
+                                        <th>Reinterpretarea Noului Testament (Hristos și Sfinți Părinți)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>**I: Să nu ai alți dumnezei afară de Mine.**</td>
+                                        <td>Monoteism strict; interzicerea închinării la idoli fizici.</td>
+                                        <td>Închinare Sfintei Treimi (Tatăl, Fiul, Duhul Sfânt); respingerea deificării îngerilor sau a creației; iubirea și temerea de Dumnezeu ca singur Creator și Judecător.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>**II: Să nu-ți faci chip cioplit.**</td>
+                                        <td>Interzicerea oricăror imagini sau reprezentări divine; evitarea idolatriei.</td>
+                                        <td>Venerarea icoanelor lui Hristos, a sfinților și a Crucii, nu ca dumnezei, ci ca mijloace de elevare a minții către divin; idolatria extinsă la lăcomie și îmbuibare (Filipeni 3:19, Coloseni 3:5).</td>
+                                    </tr>
+                                    <tr>
+                                        <td>**III: Să nu iei numele Domnului în deșert.**</td>
+                                        <td>Interzicerea jurămintelor false și a blasfemiei.</td>
+                                        <td>Evitarea oricăror jurăminte (Matei 5:34); vorbirea adevărului în toate; pocăința pentru jurăminte; interzicerea blasfemiei și a folosirii Scripturii în glume.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>**IV: Adu-ți aminte de ziua sâmbetei.**</td>
+                                        <td>Odihna obligatorie în ziua de sâmbătă; închinare.</td>
+                                        <td>Sărbătorirea „Zilei Domnului” (Duminica) în amintirea Învierii lui Hristos; abținerea de la muncă neesențială; participarea la Euharistie; meditație spirituală și autoexaminare.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>**V: Cinstește pe tatăl tău și pe mama ta.**</td>
+                                        <td>Respect și ascultare față de părinții biologici.</td>
+                                        <td>Cinstirea părinților biologici, condiționată de iubirea față de Dumnezeu; prioritatea cinstirii părinților duhovnicești (arhierei, preoți, stareți) și ascultarea de aceștia pentru mântuire.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>**VI: Să nu desfrânezi.**</td>
+                                        <td>Interzicerea adulterului și a relațiilor sexuale ilicite.</td>
+                                        <td>Extinderea la păcatul interior (pofta – Matei 5:28); condamnarea fornicației spirituale (erezia); promovarea castității și a fecioriei pentru cei ce o pot împlini; condamnarea a tot ce ațâță pofta (lăcomia pântecelui, cântece desfrânate).</td>
+                                    </tr>
+                                    <tr>
+                                        <td>**VII: Să nu ucizi.**</td>
+                                        <td>Interzicerea omorului fizic.</td>
+                                        <td>Extinderea la rădăcinile omorului: mânia, insultele, loviturile; chemarea la non-retaliere și iertare (Matei 5:22, Luca 6:29, 37); condamnarea abuzului verbal.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>**VIII: Să nu furi.**</td>
+                                        <td>Interzicerea furtului și a răpirii bunurilor.</td>
+                                        <td>Condamnarea furtului sub toate formele (fățiș, pe ascuns, înșelător); chemarea la dăruire secretă către cei lipsiți; promisiunea răsplății divine.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>**IX: Să nu mărturisești strâmb.**</td>
+                                        <td>Interzicerea mărturiei false în judecată.</td>
+                                        <td>Extinderea la defăimare și bârfă; chemarea la acoperirea păcatului aproapelui (dacă nu dăunează multora); condamnarea judecăților nedrepte.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>**X: Să nu poftești.**</td>
+                                        <td>Interzicerea poftei pentru bunurile materiale sau persoanele aproapelui.</td>
+                                        <td>Culminarea interiorizării Legii; interzicerea „poftei ticăloase cea din lăuntrul sufletului” (Matei 5:28, 15:19); recunoașterea poftei ca rădăcină a tuturor păcatelor exterioare; chemarea la generozitate și depășirea răului cu binele.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="patologie-constiinta" class="content-section bg-white p-6 sm:p-8 rounded-lg shadow-sm hidden">
+                    <h2 class="text-2xl font-bold mb-6 text-gray-800">2. Patologia Conștiinței: Conștiința Laxă sau Adormită</h2>
+                    <div class="space-y-4 content-text text-gray-700 text-justify">
+                        <p>Unul dintre cele mai subtile și periculoase aspecte ale patologiei conștiinței este "conștiința laxă", cunoscută și ca "adormită" sau "împietrită". Aceasta descrie starea în care conștiința, definită de Sfinții Părinți ca fiind "legea firii" sau "scânteia divină" sădită de Dumnezeu în om, își pierde sensibilitatea și capacitatea de a discerne corect între bine și rău. Ava Dorotei din Gaza aseamănă acest proces cu astuparea fântânilor lui Isaac de către filisteni. Conștiința nu este distrusă, dar devine inoperantă, "îngropată" sub straturi de păcate repetate, nepăsare și auto-justificare, ajungând să nu mai mustre persoana nici măcar pentru greșeli evidente. Deși conștiința este înnăscută și divină, conținuturile și buna ei funcționare se formează prin educație și experiență, sugerând că este o facultate dinamică ce poate fi cultivată, întărită sau, dimpotrivă, astupată și călcată.</p>
+                        <p>Instalarea conștiinței laxe este un proces gradual. Ea începe cu ignorarea mustrărilor ușoare ale conștiinței în lucruri considerate "mici". Omul neglijează o rugăciune, rostește un cuvânt nefolositor, cedează unei pofte nevinovate în aparență sau amână o faptă bună. De fiecare dată, conștiința îl mustră, dar dacă aceste semnale sunt ignorate în mod repetat, glasul ei slăbește. Persoana începe să-și creeze un sistem propriu de justificare, spunând "nu e mare lucru", "toată lumea face așa" sau "Dumnezeu e bun și mă va ierta". Prin această strategie, păcatul este relativizat și normalizat, iar sensibilitatea morală se atrofiază treptat. Acest ciclu vicios, unde transgresiunile mici duc la justificări și la o "conștiință parazită", adâncește degradarea morală, făcând mai dificilă simțirea remușcărilor.</p>
+                        <p>Odată ce conștiința devine laxă, omul ajunge să săvârșească păcate grave cu o uimitoare lipsă de frământare. El poate minți, înșela sau nedreptăți fără a simți remușcări, considerând faptele sale ca fiind justificate de circumstanțe sau chiar necesare. În acest stadiu, patologia este profundă, deoarece mecanismul interior de alertă, menit să-l protejeze de cădere, este anihilat. Persoana devine "oarbă" din punct de vedere spiritual, incapabilă să-și vadă propria decădere și, prin urmare, lipsită de imboldul de a căuta pocăința și îndreptarea. Această stare este descrisă în Scriptură ca o "împietrire a inimii" (Marcu 3, 5), o insensibilitate tragică față de voia lui Dumnezeu. Deși accentul principal al conștiinței este individual, manifestările patologiilor sale (minciuna, ipocrizia) au consecințe relaționale și sociale, afectând încrederea și comunitatea.</p>
+                        <p>Terapeutica pentru o conștiință laxă este complexă și necesită un efort conștient și susținut de "dezgropare a fântânii". Primul pas este trezirea, adesea provocată de un eveniment exterior (o suferință, o criză, un cuvânt duhovnicesc) care sparge carapacea nepăsării ("străpungerea" conștiinței parazite). Urmează curățirea prin pocăință, care implică acceptarea propriei stări de inferioritate morală și experimentarea "bunei-întristări" – o părere de rău pentru păcate, combinată cu o părere de bine pentru șansa de a se schimba. Etapa finală este "îndreptarea", care înseamnă punerea activă în practică a schimbării minții și a comportamentului, prin cultivarea autocunoașterii și autoevaluării. Acest proces dialectic transformă regretul în motivație pentru schimbare, oferind un cadru teologic pentru înțelegerea suferinței ca instrument pedagogic divin.</p>
+
+                        <h3 class="text-xl font-semibold mb-4 text-gray-800">Tabel 2: Patologii ale Conștiinței Morale: Tipuri, Cauze și Manifestări</h3>
+                        <div class="overflow-x-auto">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Tipul Patologiei</th>
+                                        <th>Definiție/Descriere</th>
+                                        <th>Cauze Principale</th>
+                                        <th>Manifestări/Simptome</th>
+                                        <th>Implicații Morale</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>**Patologii de Conținut**</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dedublarea/Înstrăinarea</td>
+                                        <td>Apariția unei conștiințe inautentice, parazite, care o dublează pe cea originală.</td>
+                                        <td>Teama de prejudicii din respectarea conștiinței; căutarea de justificări/alibiuri morale.</td>
+                                        <td>„Ce dacă…/doar și alții…”; formarea unei „conștiințe parazite”; starea de „venindu-și în sine”.</td>
+                                        <td>Distorsionarea percepției binelui real; auto-înșelare.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Întunecarea/Întinarea</td>
+                                        <td>Estomparea, acoperirea sau murdărirea conștiinței originale.</td>
+                                        <td>Neglijarea repetată a glasului conștiinței; înaintarea în păcat; întărirea justificărilor.</td>
+                                        <td>Conștiința vorbește „mai afumat, mai întunecos”; „insensibilitatea/adormirea/nesimțirea” conștiinței originale.</td>
+                                        <td>Pierderea sensibilității morale; incapacitatea de a distinge clar binele de rău.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>**Patologii de Funcționare**</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dubiul Moral</td>
+                                        <td>Incertitudine sau obscuritate în distingerea binelui de rău.</td>
+                                        <td>Starea căzută a conștiinței; lipsa de cunoaștere morală clară.</td>
+                                        <td>Perplexitate morală; dificultatea de a lua decizii etice.</td>
+                                        <td>Paralizie morală; căutarea de soluții externe.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Scrupulozitatea</td>
+                                        <td>Exces de verificare morală, teama exagerată de a greși.</td>
+                                        <td>Standarde morale autoimpuse prea înalte; lipsa de încredere în propria judecată.</td>
+                                        <td>Verificare obsesivă; incapacitatea de a se decide; auto-condamnare excesivă.</td>
+                                        <td>Anxietate morală; ineficiență în acțiune.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Laxismul</td>
+                                        <td>Lipsa de verificare morală sau indulgența excesivă.</td>
+                                        <td>Lipsa de sensibilitate morală; standarde morale prea scăzute; interes personal.</td>
+                                        <td>„Las’ că merge”, „ce dacă!”; acceptarea oricărei acțiuni, mai ales dacă e în interes propriu.</td>
+                                        <td>Comportament egoist; indiferență față de consecințe.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Fariseismul/Ipocrizia</td>
+                                        <td>Recursul la un dublu standard moral; prefăcătoria virtuților.</td>
+                                        <td>Dorința de a părea bun fără a fi; evitarea umilinței; iubirea de slavă.</td>
+                                        <td>Laxism față de sine și scrupulozitate față de alții; „mințirea cu viața sa”; cuvinte și fapte în contradicție cu starea interioară.</td>
+                                        <td>Pierderea credibilității; auto-înșelare profundă; afectarea relațiilor.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="evaluare-morala" class="content-section bg-white p-6 sm:p-8 rounded-lg shadow-sm hidden">
+                    <h2 class="text-2xl font-bold mb-6 text-gray-800">3. Aspecte privind Evaluarea Morală</h2>
+                    <div class="space-y-4 content-text text-gray-700 text-justify">
+                        <p>Evaluarea morală este un proces complex care depășește o simplă clasificare a faptelor în "bune" sau "rele". Teologia Morală Ortodoxă analizează actul uman în integralitatea sa, luând în considerare trei elemente fundamentale: obiectul actului (ceea ce se face), intenția sau scopul (de ce se face) și circumstanțele (cine, unde, cum, când). O faptă nu poate fi judecată corect doar pe baza aparenței sale exterioare. De exemplu, o donație (obiect bun în sine) făcută din mândrie și pentru a câștiga laudă (intenție rea) își pierde valoarea morală. Astfel, moralitatea deplină a unui act derivă din alinierea tuturor acestor componente cu voința lui Dumnezeu. Afirmația că "exteriorizarea ne schimbă interiorul" este fundamentală, stabilind o buclă de feedback unde acțiunile externe modelează și solidifică dispozițiile interne, relevând importanța practicii morale consecvente.</p>
+                        <p>Circumstanțele joacă un rol crucial în nuanțarea evaluării morale, putând fi atenuante sau agravante. O minciună spusă pentru a salva viața cuiva nu are aceeași gravitate morală ca o minciună spusă pentru a distruge reputația unei persoane. De asemenea, responsabilitatea morală este direct proporțională cu gradul de libertate și de cunoaștere al persoanei. Un act săvârșit din ignoranță nevinovată sau sub constrângere severă este evaluat diferit față de un act comis în deplină cunoștință de cauză și libertate. Această abordare personalistă evită un legalism rigid și subliniază importanța discernământului în aplicarea principiilor morale la situații concrete de viață. Perspectivele diferite ale săvârșitorului și observatorului evidențiază o provocare epistemologică în judecata morală, unde cunoașterea completă și obiectivă este dificilă, subliniind necesitatea smereniei și prudenței.</p>
+                        <p>Motivațiile faptelor sunt esențiale în evaluarea morală, acțiunile fiind determinate de teamă (anticiparea unui rău), interes (așteptarea unui câștig) sau iubire (angajamentul necondiționat pentru binele celuilalt). Iubirea (agape) transcende teama și interesul, conducând la o libertate morală autentică și la dăruire de sine. Aceasta sugerează că adevărata virtute nu este atinsă prin constrângere sau calcul, ci prin cultivarea unei dispoziții interioare de iubire. De asemenea, raportul dintre mijloace și scop este crucial; deși o acțiune implică intenție, mijloace, scop și consecințe, scopul nu poate justifica, în general, mijloacele. Niciun scop, oricât de nobil, nu poate justifica folosirea unor mijloace intrinsec rele, deoarece răul nu poate fi un instrument pentru a construi binele.</p>
+                        <p>O dilemă clasică în evaluarea morală este principiul "răului mai mic", care apare în situații în care nu există o alternativă care să evite orice formă de rău. Alegerea răului mai mic nu este o justificare a răului, ci o încercare de a limita consecințele negative într-un context în care binele absolut nu este o opțiune viabilă. Recurgerea la acest principiu trebuie făcută cu multă prudență, cu rugăciune și cu sfat duhovnicesc, pentru a nu cădea în capcana de a justifica fapte intrinsec rele sub pretextul unui scop bun. Compromisul moral, ilustrat prin "pogorământ" sau "iconomie", implică o flexibilitate strategică, răbdare și compasiune pentru a atinge un bine superior pe termen lung, chiar dacă aceasta înseamnă o adaptare temporară a standardelor, dar fără a compromite credința și dogma.</p>
+                    </div>
+                </section>
+            </div>
+        </main>
+        
+        <footer class="w-full max-w-5xl mx-auto text-center mt-auto pt-8">
+            <p class="text-sm text-gray-500">&copy; 2024 Ghid de Studiu. Toate drepturile rezervate.</p>
+        </footer>
+    </div>
+
+    <script>
+        const navButtons = document.querySelectorAll('.nav-button');
+        const contentSections = document.querySelectorAll('.content-section');
+
+        navButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetId = button.dataset.target;
+
+                navButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                button.classList.add('active');
+
+                contentSections.forEach(section => {
+                    if (section.id === targetId) {
+                        section.classList.remove('hidden');
+                    } else {
+                        section.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
